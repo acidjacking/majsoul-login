@@ -68,5 +68,13 @@ for i in range(acccounts):
     print(f'Account {i+1} entering game...')
     sleep(20)  # loading...
     print(f'Account {i+1} login completed')
+# 登录成功后延迟 120 秒，屏幕正中间点击一次
+    sleep(120)
+    screen = driver.find_element(By.TAG_NAME, "canvas")   # 重新抓 canvas 防 stale
+    ActionChains(driver)\
+        .move_to_element_with_offset(screen, 0, 0)\
+        .click()\
+        .perform()
+    print(f'Account {i+1} center click done')
 
     driver.quit()
